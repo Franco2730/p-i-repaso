@@ -7,4 +7,4 @@ server.listen(PORT, ()=>{//Expres tiene un método, dicho método recibe dos par
     
     // conn.sync({ force:true }); //Cuidado cuando se usa true
     console.log(`Server listen on port ${PORT}`);
-})  
+})   
