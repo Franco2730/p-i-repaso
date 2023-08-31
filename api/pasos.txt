@@ -129,9 +129,30 @@ y lo mismo para el archivo postsRouter.
 D)- Vamos a crear una carpeta llamada handlers donde, logicamente, estarán alojados todos los handlers, recordando que los handlers son los que enviaran toda la info al servidor 
 1- Vamos a crear dos archivos dentro de nuestra carpeta llamados: postsHandler.js y userHandler.js 
 2- Recordando que los handlers son funciones que le envian al servidor la respuesta. En el archivo userHandler vamos a crear nuestro primer handler llamado userHandler y postsHandler. NO OLVIDAR exportar, aca vamos a exportar en forma de objetos ya que vamos a exportar muchos elementos.  
-3- Una vez finalizado nuestro handler de: getUserHandler estaremos en condición de poder explicar: Lo que hacen los handlers es obtener los datos que vengan por query, por body o por params y luego envia esa respuesta al cliente, además pueden manejar errores. En este caso hacen solo eso pero más adelante utilizaremos los controladores (que ellos utilizaran la logica y se comunicaran con fuentes externas.)
+3- Una vez finalizado nuestro handler de: getUserHandler estaremos en condición de poder explicar: Lo que hacen los handlers es obtener los datos que vengan por query, por body o por params y luego envia esa respuesta al cliente, además pueden manejar errores. En este caso hacen solo eso pero más adelante utilizaremos los controladores, es decir, nuestro handler llama a nuestro controlador, lo utiliza, le pasa esos datos que recibio por params, query o body y le envia la res al cliente (que ellos utilizaran la logica y se comunicaran con fuentes externas.) Ahí está la logica, los controladores hacen toda la logica, se comunican con la fuerte externa (Api o BD) y los handlers lo que hacen es utilizar esos controladores pasarle los datos, estos que recibimos por query, body o params y enviar la respuesta al cliente. 
+
+4- Paso importante: Cambiar la sintaxis de la ruta para incorporar un Handler en ella:
+
+  Sintaxis vieja:
+
+  usersRouter.get("/", (req, res) => { 
+    res.status(200).send("Se que oyes mis pensamientos muchacho");
+}); 
+
+Ahora (ademas de requerir el handler en la hoja de rutas vamos a decir que cuando haya un match en barra sola, utilizaremos el handler getUserHandler) a la ruta anterior le vamos a borrar el segundo parametro, la función y le vamos a agregar el handler.
+
+  usersRouter.get("/", getUserHandler);
+
+    " Dato a tener en cuenta: 
+      Si, teniendo nuestra ruta con nuestro handler y, por ejemplo, en Postman, enviamos una peticion que diga:
+      localhost:3001/users?nombre=Franco&apellido=Rosales
+      Vamos a tener una respuesta de status 200 y una respuesta efectiva de servidor, pero en nuestra consola hay un error, y esto se debe a que, cuando USAMOS UN CONDICIONAL, DEBEMOS COLOCAR RETURN. Para que otorgue una respuesta y no siga con la ejecución. "
+
+      Hacemos el paso anterior con las rutas y handler que vayamos a necesitar: Primero: Corroboramos que el handler esté siendo exportado en su hoja de origen. Segundo: Lo importamos en nuestra hoja de ruta. Tercero, se lo agregamos como segundo parametro a nuestra ruta. Cuarto: Preparamo un fernet. 
+
+      "La diferencia más marcada entre Query y Params es que Query no cambia la ruta y Params si cambia" 
+      Si nos queda alguna duda de: ¿Lo que estoy viendo esta siendo enviado por Query? Es simple, ya que nosotros desarrollamos el codigo tenemos que saber que, al momento de desarrollar en handler nosotros le especificamos al cliente que es lo que puede o no colocar, en nuestro caso le especificamos que: puede mandar nombre o apellido, en tal caso sucederá algo y si no, le contestaremos con otra cosa.  
 
 
 
-seguir: 1hs:17
-pushear ambos !! 
+

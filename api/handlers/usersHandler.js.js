@@ -5,14 +5,25 @@ const getUserHandler = (req, res) => {
 
     //A continuacion vamos a hacer un condicional para comprobar si hemos recibido un nombre o un apellido, en el caso de que sea así, le enviaremos un status con un mensaje, y si no, otro status y otro mensaje.
     if( nombre || apellido ) {
-        res.status(200).send(`Encontramos el usuario con el nombre de: ${nombre} ${apellido}`);
+        return res
+        .status(200)
+        .send(
+            `Encontramos el usuario con el nombre de: ${nombre} ${apellido}`
+            );
     }
     res.status(200).send("Todos los usuarios.");
 };
 
-const getUserIdHandler = (req, res) = {};
+//Por Params --> /:id (por llevar la info despues de los dos puntos.)
+const getUserIdHandler = (req, res) => {
+    const { usuario } = req.params;
+    const { id } = req.params;
+    res.status(200).send(`Encontramos el usuario ${usuario} con el id: ${id}`);
+};
 
-const createUserHandler = (req, res) = {};
+const createUserHandler = (req, res) => {
+    
+};
 
 
 
