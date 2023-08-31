@@ -16,13 +16,17 @@ const getUserHandler = (req, res) => {
 
 //Por Params --> /:id (por llevar la info despues de los dos puntos.)
 const getUserIdHandler = (req, res) => {
-    const { usuario } = req.params;
     const { id } = req.params;
-    res.status(200).send(`Encontramos el usuario ${usuario} con el id: ${id}`);
+    res.status(200).send(`Encontramos el usuario con el id: ${id}`);
 };
 
 const createUserHandler = (req, res) => {
-    
+    const { nombre, email, telefono } = req.body;
+    res
+    .status(200)
+    .send(
+        `Creamos el usuario con el nombre: ${nombre} correo electronico: ${email} y telefono: ${telefono}`
+        )
 };
 
 

@@ -152,6 +152,70 @@ Ahora (ademas de requerir el handler en la hoja de rutas vamos a decir que cuand
 
       "La diferencia más marcada entre Query y Params es que Query no cambia la ruta y Params si cambia" 
       Si nos queda alguna duda de: ¿Lo que estoy viendo esta siendo enviado por Query? Es simple, ya que nosotros desarrollamos el codigo tenemos que saber que, al momento de desarrollar en handler nosotros le especificamos al cliente que es lo que puede o no colocar, en nuestro caso le especificamos que: puede mandar nombre o apellido, en tal caso sucederá algo y si no, le contestaremos con otra cosa.  
+5- Ahora vamos a desarrollar el handler de crear un Usuario el cual, recibira por body 3 parametros que nosotros, en el mismo handler, vamos a desestructurar para que sean los unicos que podamos recibir. MUY IMPORTANTE: al momento de crear esto en postman: 
+
+Un nuevo POST por body a: http://localhost:3001/users
+
+{
+   "nombre": "Franco",
+    "email": "franco@gmail.com", 
+    "telefono": "15565594131"
+}
+
+Nos devolverá un error y esto se debe a que Express no entiende el formato JSON que le acabamos de brindar, para solucionar esto, necesitamos otro Middleware. Dicho middleware lo desarrollaremos en nuestro server (src - app.js)  app.use(express.json())
+
+Con eso arreglado, el resultado será:
+
+Creamos el usuario con el nombre: Franco correo electronico: franco@gmail.com y telefono: 15565594131
+
+
+E)- Ahora vamos a crear un handler para posts (de posteos no del metodo post):
+  1- En la hoja de postHandler vamos a colocar un handler con su status y su mensaje, recordar exportarlo. 
+
+  2- Solicionar problema
+
+F)- A continuación vamos a crear la base de datos llamada repaso-pi.
+  1- Vamos a crear un archivo dentro de la carpeta src llamado db.js, este archivo tendrá toda la responsabilidad de tener toda la configuración de la base de datos (como app tiene la responsabilidad de contener la configuracion de nuestro servidor).
+  2- Importante visitar la fuente oficial de Sequelize donde nos presenta 3 tipos de caminos para conectar nuestro back a la base de datos, además de presenntarnos el paso a paso. 
+  3- Una vez que eligamos una opcion, copiamos y pegamos (de momento) y por debajo exportamos lo ya detallado con el nombre de conn (algo como conexión).
+  4- Una vez que tengamos el archivo de: db.js listo, lo que vamos a hacer es: importar en el archivo api/index.js. Lo pondremos en este archivo ya que en este index, el puerto estará escuchando. 
+
+  5-Importante: Sequelize tiene un método llamado Sync. Este método sirve para sincronizar todos los datos cuando se levante nuestro servidor. Entonces colocaremos que, a la variable conn, le asignaremos el valor de este metodo llamado sync y le diremos que tenga el force in true, es decir que todas las tablas existentes serán eliminadas y se crearán nuevamente de acuerdo a los modelos definidos en el código.
+
+Es importante tener precaución al utilizar force:true, ya que esto puede llevar a la pérdida de datos existentes en la base de datos. Se suele utilizar en entornos de desarrollo o cuando se está modificando la estructura de la base de datos de manera significativa. En entornos de producción, generalmente se evita el uso de force:true para no perder datos valiosos.
+
+¿Cuando utilizar orce: true o force:false?
+La decisión de usar force:true o force:false al sincronizar modelos con la base de datos depende de la situación y del entorno en el que estás trabajando. Aquí te doy algunas pautas para ayudarte a tomar esa decisión:
+
+    Desarrollo vs. Producción:
+        En entornos de desarrollo, es más común usar force:true para que la base de datos se reemplace o se actualice cada vez que cambies la estructura del modelo. Esto es útil mientras estás iterando y haciendo cambios frecuentes a los modelos.
+        En entornos de producción, generalmente es aconsejable utilizar force:false. Esto evitará que se pierdan datos existentes en la base de datos durante la sincronización. En lugar de recrear las tablas, Sequelize realizará cambios incrementales para reflejar las actualizaciones en los modelos.
+
+    Cambios en el Modelo:
+        Si estás realizando cambios significativos en la estructura de los modelos (agregando o eliminando campos importantes), puede ser útil utilizar force:true en un entorno de desarrollo para asegurarte de que los cambios se reflejen correctamente en la base de datos.
+        En situaciones donde solo estás realizando cambios menores o no críticos en los modelos, es preferible usar force:false para evitar reemplazar la base de datos completa.
+
+    Respaldo de Datos:
+        Antes de usar force:true, asegúrate de tener copias de seguridad de tus datos importantes, especialmente si estás en un entorno de producción. Esto te permitirá restaurar los datos en caso de que se pierdan debido a la sincronización.
+
+    Migraciones:
+        En lugar de depender completamente de force:true, considera utilizar herramientas de migración como "sequelize-cli" para aplicar cambios en la base de datos de manera controlada. Las migraciones te permiten realizar cambios específicos en la estructura de la base de datos sin afectar los datos existentes.
+
+En resumen, force:true puede ser útil durante el desarrollo para realizar cambios rápidos en la estructura de la base de datos, mientras que force:false es más seguro para evitar la pérdida de datos en entornos de producción. En cualquier caso, es esencial comprender las implicaciones y tener precaución al tomar esta decisión.
+
+force:true si migramos datos en una empresa con muchos datos chau, nos mandan a la hoguera derecho.
+
+6- Notar que al tener la constante sequelize como la completamos originalmente:
+
+  const sequelize = new Sequelize("postgres://postgres:postgres@localhost:5432/repaso-pi")
+
+Tenemos todos los datos al descubierto y vulnerables frente a todo aquel que quiera atentar contra nuestra bd. Para darle una solución a este inconveniento, crear un archivo llamado ".env" dicho archivo tiene que estar dentro de la carpeta api pero afuera de todas las otras, en este archivo colocaremos todas nuestras credenciales. Esto tambien se podría solucionar creando un archivo .js comun y agregandolo al gitignore para que tenga un poco mas de seguridad, pero lo recomendado es el archivo .env 
+7- Vamos a requerir el archivo .env en el archivo encargado de la configuracion de la base de datos (db.js) para ello:
+
+00:32
+
+
+
 
 
 

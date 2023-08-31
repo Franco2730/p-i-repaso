@@ -1,5 +1,9 @@
 const { Router } = require("express");
-const {getUserHandler, getUserIdHandler} = require("../handlers/usersHandler.js");
+const {
+    getUserHandler, 
+    getUserIdHandler, 
+    createUserHandler
+} = require("../handlers/usersHandler.js");
 
 const usersRouter = Router();
 
@@ -14,11 +18,18 @@ const usersRouter = Router();
     //     const { usuario } = req.params;
     //     res.status(200).send(`El usuario: ${usuario} con el id: ${id}`)
     // })
+//-------------------
+//La siguiente ruta es una mala practica por completo, ya que estamos manejando datos y resultados como si fuera una ruta tipo get pero estamos colocando post. Esto se solucionará con el handler.
+// usersRouter.post("/", (req, res) => {
+//     res.status(200).send("Usuario creado correctamente");
+// })
 
 
 usersRouter.get("/", getUserHandler); 
 
-usersRouter.get("/:usuario/:id", getUserIdHandler)
+usersRouter.get("/:id", getUserIdHandler);
+
+usersRouter.post("/", createUserHandler);
 
 
 module.exports = usersRouter;
