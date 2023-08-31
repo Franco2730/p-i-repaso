@@ -1,0 +1,134 @@
+https://jsonplaceholder.typicode.com/users
+https://jsonplaceholder.typicode.com/posts
+localhost:3001/posts
+
+
+
+Cuando hablamos del back-end los pasos son un tanto mas extensos que cuando desarrollamos el front por una cuestión que al desarrollar con Vite (front) hay muchas cosas que ya vienen armadas y configuradas por defecto. 
+Pasos para desarrollar un back desde cero.
+
+-Al crear la carpeta contenedora de todo (api) vamos a instalar un package.json en ella, para en este archivo, poder instalar todas las dependencias que podamos necesitar.
+
+-Creamos la carpeta src y dentro de ella, vamos a crear el archivo app.js (este archivo tendra la responsabilidad de tener la configuración del servidor express) app tendra la responsabilidad de tener la configuracion del servidor, ojo NO de levantar el servidor, si no, de tener su configuración. 
+
+1- Dentro de app hacemos los pasos de siempre: requerir a expres, crear una variable con ese contenido requerido para poder manipular, y exportar dicha variable.
+
+2-Dentro del index.js (archivo que esta dentro de la carpeta api) vamos a llamar a app pero lo vamos a renombrar a server (para que tenga más sentido el actuar.).
+
+3-Vamos a utilizar el método LISTEN de expres para poner a escuchar al puerto 3001, puerto que crearemos con una variable y pondremos a escuchar con sus dos parametros (el puerto y la callback). En este caso el callback será un console.log qeu simplemente nos demuestre que al levantar el servidor, se ejecutará correctamente. 
+
+A)- Ahora en nuestro servidor(app.js):
+
+1- Vamos a configurar morgan. (const morgan = require("morgan");)
+
+2- Vamos a utilizar el metodo use que nos brinda express para decirle a: app que vamos a USAR morgan en la parte de dev.
+
+3- Vamos a crear una simple ruta de practica con un status 200 con el mensaje: "Se que oyes mis pensamientos muchacho".
+
+4- Vamos a crear otra ruta de prueba pero esta vez, vamos a pasar un nombre de usuario y un id por params. Cuando en el código estemos leyendo: 
+const { id } = req.params;
+const { usuario } = req.params;
+
+ lo que estamos haciendo es que estamos desestructurando el nombre del usuario y el id que le esta llegando a la URL por params para que estos puedan ser dinámicos. Es decir, si por la url nosotros le mandamos:
+
+  ---> localhost:3001/users/Franco/27
+
+Nos estaría devolviendo: (teniendo en cuenta el .send que nosotros programemos en la request)
+
+  ---> El usuario: Franco con el id: 27 
+
+Donde vemos que hay un comentario: console.log("REQ", req) es para ver lo que nos devuelve por consola gracias a DEV de morgan. Podemos ver que req es un objeto muy grande con muchas propiedades.
+
+Diferencias de Query y params: 
+
+Query (consulta) string:
+En una URL, el query string es la parte que sigue al signo de interrogación (?). Los datos se pasan como pares clave-valor separados por el signo de igual (=``) y separados por el signo ampersand (&`). Por ejemplo:
+
+arduino
+
+https://ejemplo.com/pagina?nombre=Juan&edad=25
+
+Ventajas:
+
+    Fácil de entender y depurar, ya que los datos son visibles en la URL.
+    Puede ser compartido y marcado como favorito.
+
+Desventajas:
+
+    Limitado en la cantidad de datos que se pueden transmitir.
+    Los datos son visibles en la URL, lo que puede ser un problema si se trata de información sensible.
+
+Parámetros en la URL:
+En este enfoque, los datos se incluyen directamente en la URL, siguiendo una estructura específica. Por ejemplo:
+
+bash
+
+https://ejemplo.com/pagina/valor1/valor2
+
+Ventajas:
+
+    Puede verse más limpio y semántico en comparación con una cadena de consulta.
+    Al igual que con la cadena de consulta, es fácil de entender y depurar.
+
+Desventajas:
+
+    También está limitado en la cantidad de datos que se pueden transmitir.
+    Puede no ser adecuado para datos sensibles.
+
+
+B)- Si continuamos creando rutas en el archivo app.js vamos a ver que cada vez se hace mas extenso, cada vez que creamos rutas, se pone muy denso el poder leer ya que serán muchas. Para resolver este problema, comenzaremos a modularizar. 
+
+1- Vamos a crear una carpeta para las rutas llamada routes.
+
+2- Dentro de ella, crearemos un enrutador llamada mainRouter.js (en el PI lo tenemos como index.js) pero nosotros lo llamaremos mainRouter ya que serán las rutas principales. 
+
+3- Lo primero que debemos hacer es traernos a Router: const { Router } = require("express") donde y como bien sabemos, router es un Middleware, es un sistema de Middleware y direccionamiento, se utiliza para realizar el direccionamiento de las otras rutas. 
+
+4- Crearemos una variable llamada mainRouter que sea igual a la ejecución de nuestro Router, para poder tener todos los métodos de Router.
+
+5- Ahora si nos traeremos las consultas de app. Ya que habiamos dicho que app solo tendrá la configuración del servidor, asique no necesitamos que tenga la responsabilidad de las consultas. 
+
+6- Apenas peguemos todas las consultas, tendremos que cambiar la palabra app (app.get ; app.post ; etc) por mainRouter.
+
+---
+  Si tenemos todo cambiado de lugar a sus respectivas responsabilidades y hacemos una req de tipo get al postman nos aparecerá un error, pese a que esta todo bien. Falta algo: 
+---
+
+7- En el archivo app.js tenemos que decirle que, de la misma forma que usamos el método USE para decirle a app que vamos a USAR a morgan, ahora tambien le tenemos que avisar que vamos a USAR a mainRouter y esto lo hacemos tanto en donde lo requerimos y donde lo encontramos y debajo de morgan usando el USE.
+
+8- Vamos a crear una nueva ruta dirigida a los posteos de los usuarios. Las URL que vamos a manejar son: 
+https://jsonplaceholder.typicode.com/users 
+https://jsonplaceholder.typicode.com/posts
+
+Dicha ruta va a ser de tipo get con un status 200 y un mensaje enviado que diga: Posts Ok.
+
+
+C)- Nos vamos a encontrar con otro problema, en este archivo (mainRouter.js) vamos a tener muchas request de tipo post, get, put, tal vez delete, con lo cual se va a conformar otro inconveniente de orden y sintaxis. 
+
+1- Dentro de la carpeta router vamos a crear un archivo para las rutas de los usuarios (usersRouter.js), otro archivo exclucivamente oara las rutas de los posteos (postsRouter)
+
+2- Vamos a continuar modularizando, en el archivo usersRouter vamos a hacer practicamente lo mismo que hicimos en el mainRouter: 
+- Nos traemos al router.
+- Creamos nuestra variable de usersRouter que utilizara a router y obviamente lo exportamos.
+- Copiamos las rutas de users del archivo mainRouter y las pegamos en su archivo correspondiente (usersRouter)
+- Hacemos lo mismo con el archivo post y sus rutas.
+- MUY IMPORTANTE, no olvidar cambiar el nombre de las variables, es decir: Cuando pasamos una ruta del mainRouter al archivo usersRouter no olvidar cambiar:
+
+mainRouter.post("...  
+
+a : 
+
+userRouter.post("/users", (req, res) => {
+ res.status(201).send("Usuario creado de forma fraudulenta");
+});
+
+y lo mismo para el archivo postsRouter.
+
+3- Al haber modularizado todo, en el archivo mainRouter le tenemos que avisar donde va a encontrar la informacion llegado el caso que hagan una req a posts o users. Donde: Primero requerimos estos archivos vinculados a una nueva variable y segundo, con el metodo use, le decimos a mainRouter que USE estas varuables que contienen en endpoint. 
+
+D)- Vamos a crear una carpeta llamada handlers donde, logicamente, estarán alojados todos los handlers, recordando que los handlers son los que enviaran toda la info al servidor 
+1- Vamos a crear dos archivos dentro de nuestra carpeta llamados: postsHandler.js y userHandler.js 
+2- Recordando que los handlers son funciones que le envian al servidor la respuesta. En el archivo userHandler vamos a crear nuestro primer handler llamado userHandler y postsHandler. NO OLVIDAR exportar, aca vamos a exportar en forma de objetos ya que vamos a exportar muchos elementos.  
+3- Una vez finalizado nuestro handler de: getUserHandler estaremos en condición de poder explicar: Lo que hacen los handlers es obtener los datos que vengan por query, por body o por params y luego envia esa respuesta al cliente, además pueden manejar errores. En este caso hacen solo eso pero más adelante utilizaremos los controladores (que ellos utilizaran la logica y se comunicaran con fuentes externas.)
+
+seguir: 1hs:17
