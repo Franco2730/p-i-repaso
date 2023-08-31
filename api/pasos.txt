@@ -131,4 +131,7 @@ D)- Vamos a crear una carpeta llamada handlers donde, logicamente, estarán aloj
 2- Recordando que los handlers son funciones que le envian al servidor la respuesta. En el archivo userHandler vamos a crear nuestro primer handler llamado userHandler y postsHandler. NO OLVIDAR exportar, aca vamos a exportar en forma de objetos ya que vamos a exportar muchos elementos.  
 3- Una vez finalizado nuestro handler de: getUserHandler estaremos en condición de poder explicar: Lo que hacen los handlers es obtener los datos que vengan por query, por body o por params y luego envia esa respuesta al cliente, además pueden manejar errores. En este caso hacen solo eso pero más adelante utilizaremos los controladores (que ellos utilizaran la logica y se comunicaran con fuentes externas.)
 
+
+
 seguir: 1hs:17
+pushear ambos !! 
