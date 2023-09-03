@@ -2,7 +2,7 @@ https://jsonplaceholder.typicode.com/users
 https://jsonplaceholder.typicode.com/posts
 localhost:3001/posts
 
-
+En este archivo vamos a tener la explicacion del paso a paso para levantar un servidor y una base de datos, como crear rutas y manejadores. 
 
 Cuando hablamos del back-end los pasos son un tanto mas extensos que cuando desarrollamos el front por una cuestión que al desarrollar con Vite (front) hay muchas cosas que ya vienen armadas y configuradas por defecto. 
 Pasos para desarrollar un back desde cero.
