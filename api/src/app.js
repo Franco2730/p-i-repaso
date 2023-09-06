@@ -1,6 +1,6 @@
 //APP SERÁ NUESTRO SERVIDOR.
 
-const express = require("express"); //Vamos a traernos a express, lo requerimos
+const express = require("express"); //Vamos a traernos a express, lo requerimos.
 
 const mainRouter = require("../routes/mainRouter"); //Requerimos a mainRouter para poder utilizar las rutas realizadas en dicho archivo. Si no requerimos este archivo, no habra redireccionamiento. Y tambien debemos crear un ("app.use(mainRouter)") mas abajo, para que todo funcione.
 
