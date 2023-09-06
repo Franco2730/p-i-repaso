@@ -5,6 +5,6 @@ const PORT = 3001; //Creamos la variable del primer parametro del server.listen.
 
 server.listen(PORT, ()=>{//Expres tiene un método, dicho método recibe dos parametros. El primero es un puerto (colocaremos PORT y arriba crearemos esa variable) y el segundo es una fn callback.
     
-    // conn.sync({ force:true }); //Cuidado cuando se usa true.
+    // conn.sync({ force:true }); //Cuidado cuando se usa true
     console.log(`Server listen on port ${PORT}`);
 })
