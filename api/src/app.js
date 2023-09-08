@@ -6,7 +6,7 @@ const mainRouter = require("../routes/mainRouter"); //Requerimos a mainRouter pa
 
 const morgan = require("morgan"); //Configuramos morgan. Recordando que morgan es un Middleware y tiene la capacidad de, ademas de imprimir los movimientos del server en consola, el middleware es un puente, un intermediario, un mediador de cuando recibimos la request
 
-const app = express(); //Vamos a crear una variable donde vamos a ejecutar express para tener todos sus beneficios y métodos.
+const app = express(); //Vamos a crear una variable donde vamos a ejecutar express para tener todos sus beneficios y métodos..
 
 
 
