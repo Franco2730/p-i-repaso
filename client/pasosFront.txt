@@ -6,6 +6,7 @@ Mencionada app se estará levantando con Vite, para ello:
     2- Vamos a completar todo lo que dicha terminal nos solicita: lo vamos a levantar en React con JavaScript, el nombre de la app, etc.
     3- Vamos a dirigirnos al app.jsx y vamos a eliminar el cuerpo de la función app, todo lo que esta esté retornando. 
     4- Eliminar las importaciones de hojas de estilos, y estas mismas, en efecto. 
+    5 - Vamos a instalar dependencias necesarias, tales como: React, Redux@4.0.5, Redux-thunk, react-redux, react-router-dom@5.2.0, axios, 
 
 Para entender, de forma muy resumida lo que sucede al ejecutar el comando npm run dev (levantar el proyecto con vite) es: En primer lugar, se ejecuta el archivo index.jsx y hace un barrido de información, ya que como segunda acción se va directamente al archivo que dicho index está renderizando (App). 
 

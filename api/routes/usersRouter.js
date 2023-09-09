@@ -1,11 +1,11 @@
-const { Router } = require("express");
-const {
-    getUserHandler, 
-    getUserIdHandler, 
-    createUserHandler
-} = require("../handlers/usersHandler.js");
+// const { Router } = require("express");
+// const {
+//     getUserHandler, 
+//     getUserIdHandler, 
+//     createUserHandler
+// } = require("../handlers/usersHandler.js");
 
-const usersRouter = Router();
+// const usersRouter = Router();
 
 //Sintaxis vieja de rutas: (sintaxis sin handler)
 
@@ -25,11 +25,11 @@ const usersRouter = Router();
 // })
 
 
-usersRouter.get("/", getUserHandler); 
+// usersRouter.get("/", getUserHandler); 
 
-usersRouter.get("/:id", getUserIdHandler);
+// usersRouter.get("/:id", getUserIdHandler);
 
-usersRouter.post("/", createUserHandler);
+// usersRouter.post("/", createUserHandler);
 
 
-module.exports = usersRouter;
+// module.exports = usersRouter;

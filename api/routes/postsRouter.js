@@ -1,15 +1,15 @@
-const { Router } = require("express");
-const { getPostHandler } = require("../handlers/postsHandler.js");
+// const { Router } = require("express");
+// const { getPostHandler } = require("../handlers/postsHandler.js");
 
-const postsRouter = Router();
-
-
+// const postsRouter = Router();
 
 
 
 
 
-postsRouter.get("/", getPostHandler);
 
 
-module.exports = postsRouter;
+// postsRouter.get("/", getPostHandler);
+
+
+// module.exports = postsRouter;

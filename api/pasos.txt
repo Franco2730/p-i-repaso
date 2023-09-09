@@ -212,8 +212,7 @@ force:true si migramos datos en una empresa con muchos datos chau, nos mandan a 
 Tenemos todos los datos al descubierto y vulnerables frente a todo aquel que quiera atentar contra nuestra bd. Para darle una solución a este inconveniento, crear un archivo llamado ".env" dicho archivo tiene que estar dentro de la carpeta api pero afuera de todas las otras, en este archivo colocaremos todas nuestras credenciales. Esto tambien se podría solucionar creando un archivo .js comun y agregandolo al gitignore para que tenga un poco mas de seguridad, pero lo recomendado es el archivo .env 
 7- Vamos a requerir el archivo .env en el archivo encargado de la configuracion de la base de datos (db.js) para ello:
 
-00:32
-
+G)- Algo importante a destacar, son los modelos en la parte del servidor, ya que esto nos sirve para unificar la informacion que obtenemos de la BD como de la API, esta info la unificamos y hacemos la response al cliente, toda la info de forma unificada. (Mantener info unificada y que llamemos a las propiedades de la misma forma, conocer bien la API, como nos trae la info.)
 
 
 
