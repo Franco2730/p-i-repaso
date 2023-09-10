@@ -4,8 +4,8 @@ const postsRouter = require("./postsRouter");
 
 const mainRouter = Router();
 
-mainRouter.use("/users", usersRouter);
-mainRouter.use("/posts", postsRouter);
+mainRouter.use("/users", usersRouter);//Cuando el usuario matchee con "/users" vamos a utilizar las rutas que creamos en usersRouter.
+mainRouter.use("/posts", postsRouter);//Cuando el usuario matchee con "/posts" vamos a utilizar las rutas que creamos en postsRouter.
 
 
 

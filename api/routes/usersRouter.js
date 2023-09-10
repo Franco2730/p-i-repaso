@@ -1,21 +1,11 @@
 const { Router } = require("express");
-// const {
-//     getUserHandler, 
-//     getUserIdHandler, 
-//     createUserHandler
-// } = require("../handlers/usersHandler.js");
+const { getUserHandler, getUserIdHandler } = require("../handlers/usersHandler");
 
 const usersRouter = Router();
 
-usersRouter.get("/", (req, res) => {
-    res.status(200).send("Paraaaaaaaaaaaa, esta todo ok"); 
-})
+usersRouter.get("/", getUserHandler) //Cuando haya un match con "/users" (recordar que la ruta esta en main, aca le borramos el users porque si no sería redundante y habria que poner en postman users/users)
  
-usersRouter.get("/:id", (req, res) => {
-    console.log("Por PARAMS PAPA !!!!", req.params);
-    const { id } = req.params;
-    res.status(200).send(`Usuario con el id: ${id}`)
-})
+usersRouter.get("/:id", getUserIdHandler)
 
 usersRouter.post("/", (req, res) => {
     res.status(201).send("Usuario creado correctamente");
@@ -27,17 +17,23 @@ usersRouter.post("/", (req, res) => {
 //     res.status(200).send("Se que oyes mis pensamientos muchacho");
 // }); 
 //--------------------
+
+
 //usersRouter.get("/:usuario/:id", (req, res) => { //Cuando en la ruta le colocamos dos puntos seguido de algo mas, le estamos diciendo que va a recibir algo por params, en este ejemplo, estamos diciendo que va a recibir dos parametros con los nombres usuario e id (se pueden llamar pepito y pepita pero es mala practica)
     //     const { id } = req.params; //Aca tendramos que desestructurar como pepito o pepita de haber elegido ese erroneo camino.
     //     const { usuario } = req.params;
     //     res.status(200).send(`El usuario: ${usuario} con el id: ${id}`)
     // })
 //-------------------
+
+
 //La siguiente ruta es una mala practica por completo, ya que estamos manejando datos y resultados como si fuera una ruta tipo get pero estamos colocando post. Esto se solucionará con el handler.
 // usersRouter.post("/", (req, res) => {
 //     res.status(200).send("Usuario creado correctamente");
 // })
 
+
+//Las rutas cuando aplicamos la modularización y reemplazamos "La logica" con el handler. 
 
 // usersRouter.get("/", getUserHandler); 
 
