@@ -1,4 +1,4 @@
-//APP SERÁ NUESTRO SERVIDOR.
+//APP SERÁ NUESTRO ARCHIVO QUE CONTENDRA TODA LA CONFIGURACIÓN DE NUESTRO SERVIDOR. Como lo son los Middleware como Morgan y express json. (express.json era para que pudiera reconocer la estructura de json)
 
 const express = require("express"); //Vamos a traernos a express, lo requerimos.
 
