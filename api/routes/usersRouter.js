@@ -1,11 +1,25 @@
-// const { Router } = require("express");
+const { Router } = require("express");
 // const {
 //     getUserHandler, 
 //     getUserIdHandler, 
 //     createUserHandler
 // } = require("../handlers/usersHandler.js");
 
-// const usersRouter = Router();
+const usersRouter = Router();
+
+usersRouter.get("/", (req, res) => {
+    res.status(200).send("Paraaaaaaaaaaaa, esta todo ok");
+})
+ 
+usersRouter.get("/:id", (req, res) => {
+    console.log("Por PARAMS PAPA !!!!", req.params);
+    const { id } = req.params;
+    res.status(200).send(`Usuario con el id: ${id}`)
+})
+
+usersRouter.post("/", (req, res) => {
+    res.status(201).send("Usuario creado correctamente");
+})
 
 //Sintaxis vieja de rutas: (sintaxis sin handler)
 
@@ -32,4 +46,4 @@
 // usersRouter.post("/", createUserHandler);
 
 
-// module.exports = usersRouter;
+module.exports = usersRouter;
