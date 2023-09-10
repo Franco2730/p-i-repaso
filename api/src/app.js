@@ -12,7 +12,7 @@ const app = express(); //Vamos a crear una variable donde vamos a ejecutar expre
 app.use(morgan("dev")); //Usamos el metodo use que nos brinda express para decirle a app (expres) que USE a morgan y le indicamos que será utilizado en dev, esto quiere decir que será utilizado en develoment y no en producción. Esto nos permitirá ver en consola mas a detalle, los detalles de dicha consulta.
 
 
-// app.use(express.json())//Esto es para que pueda entender y desestructurar el objeto JSON y pueda parsear y reconocer esto..
+app.use(express.json())//Esto es para que pueda entender y desestructurar el objeto JSON y pueda parsear y reconocer esto..
 
 app.use(mainRouter); //Le decimos al archivo app.js que tambien vamos a utilizar a mainRouter.
 app.use(postsRouter);

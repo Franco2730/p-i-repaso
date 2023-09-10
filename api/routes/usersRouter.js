@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { getUserHandler, getUserIdHandler } = require("../handlers/usersHandler");
+const { getUserHandler, getUserIdHandler, createUserHandler } = require("../handlers/usersHandler"); //Acá estamos requiriendo a los manejadores (handlers) para usarlos luego cuando queremos hacer algo cuando se matchee con el path detallado.
 
 const usersRouter = Router();
 
@@ -7,9 +7,7 @@ usersRouter.get("/", getUserHandler) //Cuando haya un match con "/users" (record
  
 usersRouter.get("/:id", getUserIdHandler)
 
-usersRouter.post("/", (req, res) => {
-    res.status(201).send("Usuario creado correctamente");
-})
+usersRouter.post("/", createUserHandler)
 
 //Sintaxis vieja de rutas: (sintaxis sin handler)
 

@@ -22,6 +22,7 @@ const getUserIdHandler = (req, res) => {
 };
 
 
+//Por body --> 
 const createUserHandler = (req, res) => {
     const { nombre, email, telefono } = req.body;
     res

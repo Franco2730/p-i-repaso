@@ -151,7 +151,8 @@ Ahora (ademas de requerir el handler en la hoja de rutas vamos a decir que cuand
       Hacemos el paso anterior con las rutas y handler que vayamos a necesitar: Primero: Corroboramos que el handler esté siendo exportado en su hoja de origen. Segundo: Lo importamos en nuestra hoja de ruta. Tercero, se lo agregamos como segundo parametro a nuestra ruta. Cuarto: Preparamo un fernet. 
 
       "La diferencia más marcada entre Query y Params es que Query no cambia la ruta y Params si cambia" 
-      Si nos queda alguna duda de: ¿Lo que estoy viendo esta siendo enviado por Query? Es simple, ya que nosotros desarrollamos el codigo tenemos que saber que, al momento de desarrollar en handler nosotros le especificamos al cliente que es lo que puede o no colocar, en nuestro caso le especificamos que: puede mandar nombre o apellido, en tal caso sucederá algo y si no, le contestaremos con otra cosa.  
+      Si nos queda alguna duda de: ¿Lo que estoy viendo esta siendo enviado por Query? Es simple, ya que nosotros desarrollamos el codigo tenemos que saber que, al momento de desarrollar en handler nosotros le especificamos al cliente que es lo que puede o no colocar, en nuestro caso le especificamos que: puede mandar nombre o apellido, en tal caso sucederá algo y si no, le contestaremos con otra cosa. Pero si va a mandar, tiene que mandar como nosotros lo indicamos. 
+
 5- Ahora vamos a desarrollar el handler de crear un Usuario el cual, recibira por body 3 parametros que nosotros, en el mismo handler, vamos a desestructurar para que sean los unicos que podamos recibir. MUY IMPORTANTE: al momento de crear esto en postman: 
 
 Un nuevo POST por body a: http://localhost:3001/users
@@ -214,8 +215,7 @@ Tenemos todos los datos al descubierto y vulnerables frente a todo aquel que qui
 
 G)- Algo importante a destacar, son los modelos en la parte del servidor, ya que esto nos sirve para unificar la informacion que obtenemos de la BD como de la API, esta info la unificamos y hacemos la response al cliente, toda la info de forma unificada. (Mantener info unificada y que llamemos a las propiedades de la misma forma, conocer bien la API, como nos trae la info.)
 
-
-
+REPASAR los ultimos 10 minutos de explicación.
 
 
 
