@@ -8,7 +8,7 @@ const { Router } = require("express");
 const usersRouter = Router();
 
 usersRouter.get("/", (req, res) => {
-    res.status(200).send("Paraaaaaaaaaaaa, esta todo ok");
+    res.status(200).send("Paraaaaaaaaaaaa, esta todo ok"); 
 })
  
 usersRouter.get("/:id", (req, res) => {
