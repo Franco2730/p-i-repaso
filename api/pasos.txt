@@ -322,7 +322,12 @@ Al intentar levantar nuestro proyecto, nodemon nos va a realizar la conexión a 
 Server listen on port 3001
 Executing (default): SELECT 1+1 AS result
 
-
+C)- Tenemos un pequeño inconveniente que si vemos en nuestro archivo de db.js tenemos todas nuestras credenciales a la vista, lo cual es un tanto inseguro. Para esto, instalamos: dotenv
+  1- Vamos a crear un nuevo archivo a la altura del inxes y del package llamado .env 
+  2- Ahi dentro vamos a crear nuestras variables con todas nuestras credenciales. 
+  3- Vamos a requerir a dotenv en el archivo db.js 
+  4- Vamos a desestructurar las variables (que contienen nuestras credenciales) from su archivo.
+  5- Reemplazamos las partes del path con nuestras variables de .env
 
 
 

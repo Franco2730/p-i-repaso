@@ -4,16 +4,16 @@
 
 const { Sequelize } = require("sequelize"); 
 
+//Requerimos a dotenv:
+require("dotenv").config();
+
+//Desestructuramos las variables:
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME, DB_DIALECT } = process.env;
+
+//Reemplazamos el path con las variables que contienen nuestras credenciales. 
 const sequelize = new Sequelize(
-    "repaso-pi", // Nombre de la base de datos
-    "postgres", // Nombre de usuario
-    "2730", // Contraseña
-    {
-      host: "localhost",
-      port: 5432,
-      dialect: "postgres",
-    }
-  );
+    `${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`
+);
 
 module.exports = { 
     conn: sequelize, 
