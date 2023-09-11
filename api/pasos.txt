@@ -215,7 +215,25 @@ Tenemos todos los datos al descubierto y vulnerables frente a todo aquel que qui
 
 G)- Algo importante a destacar, son los modelos en la parte del servidor, ya que esto nos sirve para unificar la informacion que obtenemos de la BD como de la API, esta info la unificamos y hacemos la response al cliente, toda la info de forma unificada. (Mantener info unificada y que llamemos a las propiedades de la misma forma, conocer bien la API, como nos trae la info.)
 
-REPASAR los ultimos 10 minutos de explicación.
+--> SEGUNDO REPASO DE BACK-END <-- 
 
+A)- Vamos a retomar el punto F) ya que comenzaremos hablando de nuestra base de datos. Recordando que:
+1- Creamos un archivo db.js
+2- Nos tragimos a sequelize, tal y como nos dice la documentacion oficial:
+    Traer Sequelize:  const { Sequelize } = require("sequelize"); 
+    Docu. Oficial:    https://sequelize.org/docs/v6/getting-started/
+
+3- Creamos una constante que tendra la conexión como tal: 
+    const sequelize = new Sequelize('postgres://user:pass@example.com:5432/dbname');
+    Significado:
+    
+  - POSTGRES: Es el dialecto de la BD que vamos a utilizar. (en nuestro caso es postgres)
+  - USER: Es el usuario que va a utilizar la BD (en nuestro caso es postgres)
+  - PASS: Es la contraseña con la que vamos a ingresar a la BD. (en nuestro caso es postgres)
+  - EXAMPLE.COM (en nuestro caso es localhost)
+  - 5432: Es el puerto. 
+  - DBNAME: Es el nombre de la base de datos que creamos. 
+
+ 
 
 
