@@ -1,13 +1,10 @@
 const { Router } = require("express");
-const { getPostHandler } = require("../handlers/postsHandler.js");
+const { getPostHandler } = require("../handlers/postsHandler");
 
-const postsRouter = Router();
+const postsRouter = Router(); //Crea un enrutador de Express llamado postsRouter.
 
-postsRouter.get("/posts", getPostHandler);
+postsRouter.get("/", getPostHandler); 
 
-
-
-// postsRouter.get("/", getPostHandler);
 
 
 module.exports = postsRouter;

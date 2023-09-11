@@ -15,7 +15,6 @@ app.use(morgan("dev")); //Usamos el metodo use que nos brinda express para decir
 app.use(express.json())//Esto es para que pueda entender y desestructurar el objeto JSON y pueda parsear y reconocer esto..
 
 app.use(mainRouter); //Le decimos al archivo app.js que tambien vamos a utilizar a mainRouter.
-app.use(postsRouter);
 
 module.exports = app;//Vamos a exportar app, en el archivo index, la vamos a requerir en una variable con el nombre de server.
 

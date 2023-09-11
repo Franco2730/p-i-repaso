@@ -8,12 +8,6 @@ mainRouter.use("/users", usersRouter);//Cuando el usuario matchee con "/users" v
 mainRouter.use("/posts", postsRouter);//Cuando el usuario matchee con "/posts" vamos a utilizar las rutas que creamos en postsRouter.
 
 
-
-
-
-
-
-
 module.exports = mainRouter;
 
 
