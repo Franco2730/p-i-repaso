@@ -4,8 +4,16 @@
 
 const { Sequelize } = require("sequelize"); 
 
-const sequelize = new Sequelize('postgres://user:pass@example.com:5432/dbname');
-
+const sequelize = new Sequelize(
+    "repaso-pi", // Nombre de la base de datos
+    "postgres", // Nombre de usuario
+    "2730", // Contraseña
+    {
+      host: "localhost",
+      port: 5432,
+      dialect: "postgres",
+    }
+  );
 
 module.exports = { 
     conn: sequelize, 
