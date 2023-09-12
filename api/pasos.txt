@@ -328,7 +328,29 @@ C)- Tenemos un pequeño inconveniente que si vemos en nuestro archivo de db.js t
   3- Vamos a requerir a dotenv en el archivo db.js 
   4- Vamos a desestructurar las variables (que contienen nuestras credenciales) from su archivo.
   5- Reemplazamos las partes del path con nuestras variables de .env
+  6- Vamos a colocar, a continuación de nuestro path (ya reemplazado por las variables) una coma y a continuación un objeto, tal y como dice la documentación vamos a agregar:
 
+    logging: false -> Esto es para que, en consola, no figuren los mensajes de sequelize.
+
+D)- Vamos a crear una carpeta para los modelos y dentro de ella dos archivos llamados: Post y User
+  1- En el archivo User nos vamos a traer los DataTypes que es un objeto enorme, esto viene de sequelize.
+  2- Vamos a exportar una funcion que recibe como parametro a sequelize. En la documentación oficial nos dice que: Debemos exportar una funcion que sea igual a sequelize.define('User',{}) es decir, es igual a lo que vamos a definir de sequelize, como primer parametro, esta, recibirá a lo que va a ser el nombre del modelo y como segundo parametro un objeto grande con todas las caracteristicas de este. 
+  
+  Teniendo en cuenta que, a modo de ejemplo, vamos a trabajar con:
+  https://jsonplaceholder.typicode.com/ (debemos elegir para este ej a users) y suponiendo que de todo el users vamos a sacar: name, email y phone.
+
+  1--const { DataTypes }
+
+    2--module.exports = (sequelize) => {
+      sequelize.define("User", {       --> es conveniente q la 1era letra en mayuscula.
+          id:{},
+          name: {},
+          email: {},
+          phone: {}
+      })
+    }
+
+    En el archivo estará detallado lo que definamos de cada propiedad.
 
 
 

@@ -12,7 +12,9 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME, DB_DIALECT } = process.
 
 //Reemplazamos el path con las variables que contienen nuestras credenciales. 
 const sequelize = new Sequelize(
-    `${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`
+    `${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`, {
+        logging: false, //Para que no muestre mensajes propios de sequelize.
+    }
 );
 
 module.exports = { 
