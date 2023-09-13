@@ -342,12 +342,12 @@ D)- Vamos a crear una carpeta para los modelos y dentro de ella dos archivos lla
   1--const { DataTypes }
 
     2--module.exports = (sequelize) => {
-      sequelize.define("User", {       --> es conveniente q la 1era letra en mayuscula.
+      sequelize.define("User", {       --> es conveniente q la 1era letra en mayuscula, ya que es el modelo, si es en minuscula, es una variable.
           id:{},
           name: {},
           email: {},
           phone: {}
-      })
+      }) 
     }
 
     En el archivo estará detallado lo que definamos de cada propiedad.
